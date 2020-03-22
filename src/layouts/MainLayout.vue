@@ -224,7 +224,13 @@ export default {
       }
     },
     onSelectedFolder: function (absolutePath) {
-      this.setSelectedFolder(absolutePath)
+      // this.setSelectedFolder(absolutePath)
+      const data = require('../mock/mockdata').default
+      var min = Math.ceil(1)
+      var max = Math.floor(data.length)
+      var random = Math.floor(Math.random() * (max - min + 1)) + min
+      // this.rootDir = data.slice(0, random)
+      this.contents = require('../mock/contents').default.slice(0, random)
     },
     // called by folderTree component
     onLazyLoad: function ({ node, key, done, fail }) {
