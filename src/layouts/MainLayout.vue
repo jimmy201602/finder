@@ -270,8 +270,14 @@ export default {
     onShortcutSelected: function (type) {
       console.log('onShortcutSelected type:', type)
       // let absolutePath = app.getPath(type)
-      const absolutePath = '/'
+      const absolutePath = '/' + type
       this.setSelectedFolder(absolutePath)
+      const data = require('../mock/mockdata').default
+      var min = Math.ceil(1)
+      var max = Math.floor(data.length)
+      var random = Math.floor(Math.random() * (max - min + 1)) + min
+      // this.rootDir = data.slice(0, random)
+      this.contents = require('../mock/contents').default.slice(0, random)
     },
     focusOnSearch (evt) {
       if (
