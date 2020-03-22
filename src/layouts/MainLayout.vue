@@ -224,7 +224,7 @@ export default {
       }
     },
     onSelectedFolder: function (absolutePath) {
-      // this.setSelectedFolder(absolutePath)
+      this.setSelectedFolder(absolutePath)
       const data = require('../mock/mockdata').default
       var min = Math.ceil(1)
       var max = Math.floor(data.length)
