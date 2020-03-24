@@ -243,26 +243,28 @@ export default {
       }
     },
     loadChildren: function (node, key) {
-      try {
-        if (node.children.length) {
-          node.children.splice(0, node.children.length)
-        }
-        for (const fileInfo of walkFolders(key, 0)) {
-          // we only want folders
-          if (!fileInfo.isDir) {
-            continue
-          }
-          // create a new node
-          const n = this.createNode(fileInfo)
-          // add child to parent
-          node.children.push(n)
-        }
-        return true
-      } catch (err) {
-        // usually access error
-        console.error('Error: ', err)
-      }
-      return false
+      const data = require('../mock/mockchildren').default
+      node.children.push(data)
+      // try {
+      //   if (node.children.length) {
+      //     node.children.splice(0, node.children.length)
+      //   }
+      //   for (const fileInfo of walkFolders(key, 0)) {
+      //     // we only want folders
+      //     if (!fileInfo.isDir) {
+      //       continue
+      //     }
+      //     // create a new node
+      //     const n = this.createNode(fileInfo)
+      //     // add child to parent
+      //     node.children.push(n)
+      //   }
+      //   return true
+      // } catch (err) {
+      //   // usually access error
+      //   console.error('Error: ', err)
+      // }
+      // return false
     },
     setSelectedFolder: function (folder) {
       this.selectedFolder = folder
