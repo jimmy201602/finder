@@ -49,55 +49,6 @@
                 context-menu
               >
 
-                <q-list dense style="min-width: 100px">
-                  <q-item clickable v-close-popup>
-                    <q-item-section>Open...</q-item-section>
-                  </q-item>
-                  <q-item clickable v-close-popup>
-                    <q-item-section>New</q-item-section>
-                  </q-item>
-                  <q-separator />
-                  <q-item clickable>
-                    <q-item-section>Preferences</q-item-section>
-                    <q-item-section side>
-                      <q-icon name="keyboard_arrow_right" />
-                    </q-item-section>
-
-                    <q-menu anchor="top right" self="top left">
-                      <q-list>
-                        <q-item
-                          v-for="n in 3"
-                          :key="n"
-                          dense
-                          clickable
-                        >
-                          <q-item-section>Submenu Label</q-item-section>
-                          <q-item-section side>
-                            <q-icon name="keyboard_arrow_right" />
-                          </q-item-section>
-                          <q-menu auto-close anchor="top right" self="top left">
-                            <q-list>
-                              <q-item
-                                v-for="n in 3"
-                                :key="n"
-                                dense
-                                clickable
-                              >
-                                <q-item-section>3rd level Label</q-item-section>
-                              </q-item>
-                            </q-list>
-                          </q-menu>
-                        </q-item>
-                      </q-list>
-                    </q-menu>
-
-                  </q-item>
-                  <q-separator />
-                  <q-item clickable v-close-popup>
-                    <q-item-section>Quit</q-item-section>
-                  </q-item>
-                </q-list>
-
               </q-menu>
             </q-tr>
           </q-table>
@@ -108,20 +59,53 @@
         context-menu
       >
 
-        <q-list dense style="min-width: 100px">
+        <q-list dense style="min-width: 100px;">
           <q-item clickable v-close-popup>
-            <q-item-section>Open...</q-item-section>
+            <q-item-section>Open</q-item-section>
           </q-item>
           <q-item clickable v-close-popup>
-            <q-item-section>New</q-item-section>
+            <q-item-section>Preview</q-item-section>
           </q-item>
           <q-separator />
+          <q-item clickable v-close-popup>
+            <q-item-section>Upload files</q-item-section>
+          </q-item>
+          <q-item clickable v-close-popup>
+            <q-item-section>Into New Folder</q-item-section>
+          </q-item>
+          <q-separator />
+          <q-item clickable v-close-popup>
+            <q-item-section>Copy</q-item-section>
+          </q-item>
+          <q-item clickable v-close-popup>
+            <q-item-section>Cut</q-item-section>
+          </q-item>
+          <q-item clickable v-close-popup>
+            <q-item-section>Duplicate</q-item-section>
+          </q-item>
+          <q-separator />
+          <q-item clickable v-close-popup>
+            <q-item-section>Into trash</q-item-section>
+          </q-item>
+          <q-item clickable v-close-popup>
+            <q-item-section>Empty the folder</q-item-section>
+          </q-item>
+          <q-item clickable v-close-popup>
+            <q-item-section>Hide (Preference)</q-item-section>
+          </q-item>
+          <q-separator />
+          <q-item clickable v-close-popup>
+            <q-item-section>Rename</q-item-section>
+          </q-item>
+          <q-separator />
+          <q-item clickable>
+            <q-item-section>Create archive</q-item-section>
+          </q-item>
           <q-item clickable>
             <q-item-section>Preferences</q-item-section>
             <q-item-section side>
               <q-icon name="keyboard_arrow_right" />
             </q-item-section>
-
             <q-menu anchor="top right" self="top left">
               <q-list>
                 <q-item
@@ -153,7 +137,17 @@
           </q-item>
           <q-separator />
           <q-item clickable v-close-popup>
-            <q-item-section>Quit</q-item-section>
+            <q-item-section>Select all</q-item-section>
+          </q-item>
+          <q-item clickable v-close-popup>
+            <q-item-section>Invert selection</q-item-section>
+          </q-item>
+          <q-separator />
+          <q-item clickable v-close-popup>
+            <q-item-section>To Places</q-item-section>
+          </q-item>
+          <q-item clickable v-close-popup>
+            <q-item-section>Get info</q-item-section>
           </q-item>
         </q-list>
 
