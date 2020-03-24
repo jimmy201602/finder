@@ -95,7 +95,7 @@
           </q-item>
           <q-separator />
           <q-item clickable v-close-popup>
-            <q-item-section>Rename</q-item-section>
+            <q-item-section @click="testclick($event,'Rename')">Rename</q-item-section>
           </q-item>
           <q-separator />
           <q-item clickable>
@@ -236,6 +236,16 @@ export default {
   },
 
   methods: {
+    testclick: function (event, data) {
+      console.log(this.selectedNode)
+      this.$q.notify({
+        type: 'positive',
+        message: `You clicked menu ${data} !`,
+        position: 'top',
+        // caption: 'It overrides the type\'s default icon and color.',
+        color: 'primary'
+      })
+    },
     // when a node is single-clicked
     onClick: function (node) {
       this.selectedNode = node
@@ -249,6 +259,7 @@ export default {
     },
 
     rowClick: function (node) {
+      console.log('row click')
       this.onClick(node)
     },
 
