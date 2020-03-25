@@ -57,6 +57,7 @@
       <q-menu
         touch-position
         context-menu
+        fit
       >
 
         <q-list dense style="min-width: 100px;">
@@ -237,7 +238,6 @@ export default {
 
   methods: {
     testclick: function (event, data) {
-      console.log(this.selectedNode)
       this.$q.notify({
         type: 'positive',
         message: `You clicked menu ${data} !`,

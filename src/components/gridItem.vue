@@ -1,5 +1,5 @@
 <template>
-  <div class="griditemcontainer" :style="gridItemContainerStyleObject" @dblclick.prevent="onDblClick" @click="onClick">
+  <div class="griditemcontainer" :style="gridItemContainerStyleObject" @dblclick.prevent="onDblClick" @click="onClick" @contextmenu="onClick">
     <div class="griditemimage" :style="gridItemImageStyleObject">
       <grid-item-image
         :node="node"
