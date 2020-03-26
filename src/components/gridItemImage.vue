@@ -2,12 +2,6 @@
   <div class="square" :style="gridItemImageContainerStyleObject">
     <span class="img-helper"></span>
     <q-img :src="getImage">
-      <q-menu
-        touch-position
-        context-menu
-      >
-
-      </q-menu>
     </q-img>
   </div>
 </template>

@@ -44,12 +44,6 @@
               <q-td key="modified" :props="props">
                 {{ getModified(props.row) }}
               </q-td>
-              <q-menu
-                touch-position
-                context-menu
-              >
-
-              </q-menu>
             </q-tr>
           </q-table>
         </div>

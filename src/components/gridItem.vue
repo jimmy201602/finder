@@ -1,5 +1,5 @@
 <template>
-  <div class="griditemcontainer" :style="gridItemContainerStyleObject" @dblclick.prevent="onDblClick" @click="onClick" @contextmenu="onClick">
+  <div class="griditemcontainer" :style="gridItemContainerStyleObject" @dblclick.prevent="onDblClick" @click="onClick" @mousedown="select">
     <div class="griditemimage" :style="gridItemImageStyleObject">
       <grid-item-image
         :node="node"
@@ -103,6 +103,9 @@ export default {
         clearTimeout(this.timer)
       }
       this.$emit('dblClick', this.node)
+    },
+    select: function () {
+      this.$emit('click', this.node)
     }
   }
 }
