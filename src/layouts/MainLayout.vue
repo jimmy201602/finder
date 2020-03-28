@@ -62,13 +62,9 @@
 const mime = require('mime-types')
 const path = require('path')
 import walkFolders from '../util/walkFolders'
-const fs = require('fs')
-// file watcher
-// const chokidar = require('chokidar')
 export default {
   created () {
     this.setSelectedFolder(this.drive + path.sep)
-    this.rootDir.push(...this.getFolders(this.selectedFolder))
     // this.$root.$on('rescan-current-folder', this.rescanCurrentFolder)
     this.rootDir = require('../mock/mockdata').default
   },
@@ -107,71 +103,12 @@ export default {
     }
   },
   methods: {
-    // folderWatcherHandler: function (newFolder, oldFolder) {
-    //   if (oldFolder && this.watcher) {
-    //     this.watcher.close()
-    //   }
-    //   if (newFolder) {
-    //     // let backend know to statically serve files from this folder
-    //     this.watcher = chokidar.watch(newFolder, {
-    //       depth: 0,
-    //       ignorePermissionErrors: true
-    //     })
-    //     if (this.watcher) {
-    //       this.watcher.on('ready', () => { // initial scan done
-    //         // watch for additions
-    //         this.watcher.on('raw', (event, path, details) => {
-    //           this.$root.$emit('rescan-current-folder')
-    //         })
-    //       })
-    //       this.watcher.on('error', (error) => { // initial scan done
-    //         console.error(error)
-    //       })
-    //     }
-    //   }
-    // },
-    checkForDrive: async function (drives, index) {
-      return new Promise(function (resolve, reject) {
-        try {
-          const stat = fs.statSync(drives[index] + ':' + path.sep)
-          drives[index] += ':\\'
-          resolve(stat)
-        } catch (error) {
-          // remove from drives list
-          drives.splice(index, 1)
-          reject(error)
-        }
-      })
-    },
     rescanCurrentFolder: function () {
       this.clearAllContentItems()
       this.contents.push(...this.getFolderContents(this.selectedFolder))
     },
     setFolder: function (folder) {
       this.selectedFolder = folder
-    },
-    getFolders: function (absolutePath) {
-      const folders = []
-
-      // check incoming arg
-      if (!absolutePath || typeof absolutePath !== 'string') {
-        return folders
-      }
-
-      for (const fileInfo of walkFolders(absolutePath, 0)) {
-        // all files and folders
-        if ('error' in fileInfo) {
-          console.error(`Error: ${fileInfo.rootDir} - ${fileInfo.error}`)
-          continue
-        }
-        // we only want folders
-        if (!fileInfo.isDir) {
-          continue
-        }
-        const node = this.createNode(fileInfo)
-        folders.push(node)
-      }
-      return folders
     },
     getFolderContents: function (folder) {
       const contents = []

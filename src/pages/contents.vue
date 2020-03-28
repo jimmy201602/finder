@@ -235,7 +235,7 @@ export default {
 
   methods: {
     onContextMenuShow: function (event) {
-      console.log(event.toElement.classList[0])
+      // console.log(event.toElement.classList[0])
       if (event.toElement.classList[0] === undefined || event.toElement.classList[0] === 'row' || event.toElement.classList[0] === 'contents-wrapper') {
         this.contextmenucontrol = false
         if (this.selectedNode !== null) {
