@@ -52,10 +52,12 @@
         touch-position
         context-menu
         fit
+        @before-show="onContextMenuShow"
+        @before-hide="onContextMenuHide"
       >
 
         <q-list dense style="min-width: 100px;">
-          <q-item clickable v-close-popup>
+          <q-item clickable v-close-popup v-show="contextmenucontrol">
             <q-item-section>Open</q-item-section>
           </q-item>
           <q-item clickable v-close-popup>
@@ -223,7 +225,8 @@ export default {
         rowsPerPage: 0,
         sortBy: 'name',
         descending: false
-      }
+      },
+      contextmenucontrol: true // to show open menu
     }
   },
 
@@ -231,6 +234,20 @@ export default {
   },
 
   methods: {
+    onContextMenuShow: function (event) {
+      console.log(event.toElement.classList[0])
+      if (event.toElement.classList[0] === undefined || event.toElement.classList[0] === 'row' || event.toElement.classList[0] === 'contents-wrapper') {
+        this.contextmenucontrol = false
+        if (this.selectedNode !== null) {
+          this.selectedNode = null
+        }
+      } else {
+        this.contextmenucontrol = true
+      }
+    },
+    onContextMenuHide: function (event) {
+      this.iscontextmenushow = false
+    },
     testclick: function (event, data) {
       this.$q.notify({
         type: 'positive',
@@ -295,6 +312,9 @@ export default {
 </script>
 
 <style>
+/*.q-position-engine {*/
+/*    min-height: 560px !important;*/
+/*}*/
 .contents-wrapper {
   position: relative;
   width: 100%;

@@ -1,5 +1,5 @@
 <template>
-  <div class="griditemcontainer" :style="gridItemContainerStyleObject" @dblclick.prevent="onDblClick" @click="onClick" @mousedown="select">
+  <div class="griditemcontainer" :style="gridItemContainerStyleObject" @dblclick.prevent="onDblClick" @click="onClick" @mousedown="onMouseDown" >
     <div class="griditemimage" :style="gridItemImageStyleObject">
       <grid-item-image
         :node="node"
@@ -105,6 +105,10 @@ export default {
       this.$emit('dblClick', this.node)
     },
     select: function () {
+      this.$emit('click', this.node)
+    },
+    onMouseDown: function (event) {
+      // console.log('on mouse down')
       this.$emit('click', this.node)
     }
   }
